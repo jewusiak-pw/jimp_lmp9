@@ -1,4 +1,4 @@
-all:
+all: 
 	gcc -Wall --pedantic src/*.c -o bin/gauss
 
 test: all
