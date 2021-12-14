@@ -45,9 +45,9 @@ void split_matrix(Matrix *ab, Matrix *a, Matrix *b) {
 }
 
 //Łączy macierze A (a) i b (b) w macierz rozszerzoną A|b (ab)
-Matrix *join_matrices(Matrix *a, Matrix *b){
+Matrix *join_matrices(Matrix *a, Matrix *b) {
     Matrix *ab = createMatrix(a->r, a->c + b->c);
-int i, j;
+    int i, j;
     for (i = 0; i < ab->r; i++) {
         for (j = 0; j < ab->c - 1; j++)
             ab->data[i][j] = a->data[i][j];
@@ -63,16 +63,17 @@ int i, j;
 int eliminate(Matrix *mat, Matrix *b) {
     int i, j;
 
-    Matrix *ab=join_matrices(mat, b);
+    Matrix *ab = join_matrices(mat, b);
 
-    for (i = 0; i < ab->r - 1; i++) {
+    for (i = 0; i < ab->r; i++) {
         int row = select_max_row(ab, i);//el główny
         if (row == -1)//dzielenie przez 0
             return 1;
-        swap_rows(ab, row, i);
-        for (j = i + 1; j < ab->r; j++)
-            subtract_row(ab, i, j, ab->data[j][i] / ab->data[i][i]);
-
+        if (i != ab->r - 1) {
+            swap_rows(ab, row, i);
+            for (j = i + 1; j < ab->r; j++)
+                subtract_row(ab, i, j, ab->data[j][i] / ab->data[i][i]);
+        }
     }
 
 
