@@ -20,7 +20,14 @@ int main(int argc, char ** argv) {
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
-
+		if (res==2)
+		{
+			puts("Złe wymiary macierzy!");
+		}
+		if (res==1)
+		{
+			puts("Dzielenie przez 0!");
+		}
 		printToScreen(x);
 	  freeMatrix(x);
 	} else {
