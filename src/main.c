@@ -17,6 +17,12 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
+if(res==1){
+    puts("Macierz osobliwa!");
+}
+puts("wyniki");
+    printToScreen(A);
+    printToScreen(b);
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
