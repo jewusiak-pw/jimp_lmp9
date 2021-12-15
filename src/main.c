@@ -26,7 +26,7 @@ int main(int argc, char ** argv) {
 		}
 		if (res==1)
 		{
-			puts("Dzielenie przez 0!");
+			puts("Dzielenie przez 0!"); 
 		}
 		printToScreen(x);
 	  freeMatrix(x);
