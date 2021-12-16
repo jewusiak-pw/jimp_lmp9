@@ -4,7 +4,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+/*
+ * Zwraca:
+ * -1 - zły format macierzy A
+ * -2 - zły format macierzy b
+ * -3 - dzielenie przez 0
+ * -4 - złe wymiary macierzy
+ */
 int main(int argc, char ** argv) {
 	int res;
 	Matrix * A = readFromFile(argv[1]);
@@ -17,14 +23,12 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
-if(res==1){
-    puts("Macierz osobliwa!");
-}
-puts("wyniki");
-    printToScreen(A);
-    printToScreen(b);
+
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
+        if (res==1)
+            puts("Dzielenie przez 0!");
+
 		res = backsubst(x,A,b);
 		if (res==2)
 		{
