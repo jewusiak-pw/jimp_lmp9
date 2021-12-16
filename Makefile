@@ -75,4 +75,4 @@ test-4: test-dir all
 
 
 
-test: test-os test-1 test-2 test-3 test-4
+test-all: test-os test-1 test-2 test-3 test-4
